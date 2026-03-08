@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>QuizForge | Online Quiz Maker</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="bg-shape bg-shape-one"></div>
+  <div class="bg-shape bg-shape-two"></div>
+
+  <header class="header">
+    <div class="brand-block">
+      <p class="brand-tag">LEVEL 2 TASK</p>
+      <h1>QuizForge</h1>
+      <p class="brand-subtitle">Create quizzes, share knowledge, and get instant scoring.</p>
+    </div>
+    <div id="authStatus" class="auth-status"></div>
+  </header>
+
+  <main class="container">
+    <nav class="tabs" aria-label="Main navigation">
+      <button class="tab active" data-view="home">Home</button>
+      <button class="tab" data-view="create">Quiz Creation</button>
+      <button class="tab" data-view="list">Quiz Listing</button>
+      <button class="tab" data-view="take">Quiz Taking</button>
+      <button class="tab" data-view="auth">User Authentication</button>
+    </nav>
+
+    <section id="home" class="panel active">
+      <h2>Online Quiz Maker</h2>
+      <p>Build your own multiple-choice quizzes and let others attempt them with immediate feedback.</p>
+      <div class="home-grid">
+        <article>
+          <h3>Create</h3>
+          <p>Add questions, options, and the correct answer key in minutes.</p>
+        </article>
+        <article>
+          <h3>Take</h3>
+          <p>Answer one question at a time for a focused quiz experience.</p>
+        </article>
+        <article>
+          <h3>Results</h3>
+          <p>See score summary and correct answers right after submitting.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="create" class="panel">
+      <h2>Quiz Creation</h2>
+      <form id="quizForm" class="card">
+        <label>
+          Quiz title
+          <input id="quizTitle" type="text" placeholder="e.g., JavaScript Basics" required />
+        </label>
+
+        <div id="questionList"></div>
+
+        <div class="form-actions">
+          <button type="button" id="addQuestionBtn" class="btn secondary">+ Add Question</button>
+          <button type="submit" class="btn primary">Save Quiz</button>
+        </div>
+      </form>
+      <p class="hint">You must be logged in to create quizzes.</p>
+    </section>
+
+    <section id="list" class="panel">
+      <h2>Quiz Listing</h2>
+      <div id="quizCatalog" class="quiz-grid"></div>
+    </section>
+
+    <section id="take" class="panel">
+      <h2>Quiz Taking</h2>
+      <div id="quizRunner" class="card">
+        <p>Select a quiz from the listing and click <strong>Take Quiz</strong>.</p>
+      </div>
+    </section>
+
+    <section id="auth" class="panel">
+      <h2>User Authentication</h2>
+      <div class="auth-grid">
+        <form id="registerForm" class="card">
+          <h3>Register</h3>
+          <label>
+            Username
+            <input id="regUser" type="text" required />
+          </label>
+          <label>
+            Password
+            <input id="regPass" type="password" minlength="4" required />
+          </label>
+          <button type="submit" class="btn primary">Create Account</button>
+        </form>
+
+        <form id="loginForm" class="card">
+          <h3>Login</h3>
+          <label>
+            Username
+            <input id="logUser" type="text" required />
+          </label>
+          <label>
+            Password
+            <input id="logPass" type="password" minlength="4" required />
+          </label>
+          <button type="submit" class="btn primary">Login</button>
+          <button type="button" id="logoutBtn" class="btn secondary">Logout</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>

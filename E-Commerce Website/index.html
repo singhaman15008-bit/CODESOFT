@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NovaCart - E-Commerce</title>
+    <link rel="stylesheet" href="./assets/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="brand">
+        <span class="brand-mark">N</span>
+        <div>
+          <h1>NovaCart</h1>
+          <p>Pure HTML, CSS, and JavaScript</p>
+        </div>
+      </div>
+      <div class="header-actions">
+        <button id="auth-trigger" class="btn btn-secondary">Login / Signup</button>
+        <button id="cart-trigger" class="btn btn-primary">
+          Cart
+          <span id="cart-badge" class="badge">0</span>
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <p class="eyebrow">Level 3 Task 1</p>
+        <h2>E-Commerce Website</h2>
+        <p>Browse products, filter quickly, add to cart, and complete a simulated checkout flow.</p>
+      </section>
+
+      <section class="filters card">
+        <div class="field">
+          <label for="search">Search</label>
+          <input id="search" type="text" placeholder="Search by product name..." />
+        </div>
+        <div class="field">
+          <label for="category">Category</label>
+          <select id="category"></select>
+        </div>
+        <div class="field">
+          <label for="max-price">Max Price</label>
+          <input id="max-price" type="number" min="1" placeholder="1000" />
+        </div>
+        <div class="field">
+          <label for="sort">Sort</label>
+          <select id="sort">
+            <option value="default">Default</option>
+            <option value="price-asc">Price: Low to High</option>
+            <option value="price-desc">Price: High to Low</option>
+            <option value="name-asc">Name: A-Z</option>
+            <option value="name-desc">Name: Z-A</option>
+          </select>
+        </div>
+        <button id="clear-filters" class="btn btn-ghost">Clear</button>
+      </section>
+
+      <section class="catalog-head">
+        <h3>Products</h3>
+        <p id="product-count"></p>
+      </section>
+      <section id="products" class="product-grid"></section>
+      <p id="empty-state" class="empty hidden">No products match your current filters.</p>
+    </main>
+
+    <aside id="cart-panel" class="panel hidden" aria-hidden="true">
+      <div class="panel-head">
+        <h3>Your Cart</h3>
+        <button id="close-cart" class="btn btn-ghost">Close</button>
+      </div>
+      <div id="cart-items" class="cart-items"></div>
+      <div class="cart-summary card">
+        <p><span>Subtotal</span><strong id="subtotal">$0.00</strong></p>
+        <p><span>Shipping</span><strong id="shipping">$0.00</strong></p>
+        <p class="total"><span>Total</span><strong id="total">$0.00</strong></p>
+      </div>
+      <button id="checkout-trigger" class="btn btn-primary wide">Proceed to Checkout</button>
+    </aside>
+
+    <dialog id="auth-modal" class="modal">
+      <form method="dialog" class="modal-shell" id="auth-form">
+        <div class="panel-head">
+          <h3 id="auth-title">Login</h3>
+          <button class="btn btn-ghost" value="cancel">Close</button>
+        </div>
+        <div id="auth-name-field" class="field hidden">
+          <label for="auth-name">Name</label>
+          <input id="auth-name" type="text" placeholder="Ava Lee" />
+        </div>
+        <div class="field">
+          <label for="auth-email">Email</label>
+          <input id="auth-email" type="email" placeholder="ava@example.com" />
+        </div>
+        <div class="field">
+          <label for="auth-password">Password</label>
+          <input id="auth-password" type="password" placeholder="At least 6 characters" />
+        </div>
+        <p id="auth-error" class="error hidden"></p>
+        <button id="auth-submit" class="btn btn-primary wide" type="submit">Login</button>
+        <button id="auth-toggle" class="btn btn-ghost wide" type="button">Need an account? Sign up</button>
+      </form>
+    </dialog>
+
+    <dialog id="checkout-modal" class="modal">
+      <form method="dialog" class="modal-shell" id="checkout-form">
+        <div class="panel-head">
+          <h3>Checkout</h3>
+          <button class="btn btn-ghost" value="cancel">Close</button>
+        </div>
+        <div class="field">
+          <label for="ship-name">Full Name</label>
+          <input id="ship-name" type="text" />
+        </div>
+        <div class="field">
+          <label for="ship-address">Address</label>
+          <input id="ship-address" type="text" />
+        </div>
+        <div class="field">
+          <label for="ship-city">City</label>
+          <input id="ship-city" type="text" />
+        </div>
+        <div class="split">
+          <div class="field">
+            <label for="card-number">Card Number</label>
+            <input id="card-number" type="text" placeholder="16 digits" />
+          </div>
+          <div class="field">
+            <label for="card-expiry">Expiry</label>
+            <input id="card-expiry" type="text" placeholder="MM/YY" />
+          </div>
+          <div class="field">
+            <label for="card-cvv">CVV</label>
+            <input id="card-cvv" type="text" placeholder="3 digits" />
+          </div>
+        </div>
+        <p id="checkout-error" class="error hidden"></p>
+        <button class="btn btn-primary wide" type="submit">Place Order</button>
+      </form>
+    </dialog>
+
+    <dialog id="confirm-modal" class="modal">
+      <div class="modal-shell">
+        <h3>Order Confirmed</h3>
+        <p id="confirm-text"></p>
+        <button id="confirm-close" class="btn btn-primary wide">Done</button>
+      </div>
+    </dialog>
+
+    <p id="toast" class="toast hidden" role="status" aria-live="polite"></p>
+
+    <script type="module" src="./assets/app.js"></script>
+  </body>
+</html>
